@@ -362,7 +362,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const mapContainer = document.getElementById('map');
 
-    if (MAPBOX_ACCESS_TOKEN !== '' && mapContainer && typeof mapboxgl !== 'undefined') {
+    if (MAPBOX_ACCESS_TOKEN.startsWith('pk.') && mapContainer && typeof mapboxgl !== 'undefined') {
         const fallback = document.getElementById('map-fallback');
         if (fallback) fallback.style.display = 'none';
 

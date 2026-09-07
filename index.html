@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="nl" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flake Burgers | Kortrijk</title>
+
+    <!-- Structured data voor zoekmachines -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Restaurant",
+        "name": "Flake Burgers",
+        "description": "Smashburgers, sundae en limonades in het centrum van Kortrijk.",
+        "image": "images/meal%204.jpg",
+        "hasMenu": "menu.html",
+        "servesCuisine": [
+            "Burgers",
+            "Smashburgers"
+        ],
+        "priceRange": "€€",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Leiestraat 43",
+            "postalCode": "8500",
+            "addressLocality": "Kortrijk",
+            "addressCountry": "BE"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 50.8280,
+            "longitude": 3.2649
+        },
+        "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+                "Sunday"
+            ],
+            "opens": "12:00",
+            "closes": "22:00"
+        },
+        "sameAs": [
+            "https://www.instagram.com/flakeburgers/",
+            "https://www.tiktok.com/@flakeburgers"
+        ],
+        "potentialAction": {
+            "@type": "OrderAction",
+            "target": "https://deliveroo.be/en/menu/Kortrijk/centrum/smashed-burger-kortrijk?day=today&geohash=u1434q69dzqb&time=ASAP"
+        }
+    }
+    </script>
+
+    <!-- Tailwind CSS CDN (voor snelle layout grids & flexbox) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FontAwesome Pictogrammen -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Mapbox GL JS -->
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
+
+    <!-- Onze Aparte Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body id="top" class="bg-white text-zinc-900 antialiased selection:bg-sky-300 selection:text-black">
+
+    <!-- NAVIGATION -->
+    <nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-zinc-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Flake-logo -->
+            <a href="#top" aria-label="Terug naar boven"
+                class="block h-12 w-28 shrink-0 overflow-hidden rounded-md bg-sky-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2">
+                <img src="images/logo.jpg" alt="Flake Burgers" class="h-full w-full scale-[1.55] object-cover"
+                    width="112" height="48">
+            </a>
+
+            <!-- Navigation Links -->
+            <div class="hidden lg:flex items-center space-x-6 font-bold text-sm uppercase tracking-wider text-zinc-700">
+                <a href="menu.html" class="hover:text-sky-400 transition-colors">Menu</a>
+                <a href="#events" class="hover:text-sky-400 transition-colors">Foodtruck & Events</a>
+                <a href="#location" data-i18n="nav.location" class="hover:text-sky-400 transition-colors">Vind ons</a>
+                <a href="contact.html" class="hover:text-sky-400 transition-colors">Contact</a>
+                <div class="flex items-center" aria-label="Social media">
+                    <a href="https://www.instagram.com/flakeburgers/" target="_blank" rel="noopener noreferrer"
+                        aria-label="Flake Burgers op Instagram"
+                        class="flex h-11 w-11 items-center justify-center rounded-full text-lg hover:bg-zinc-100 hover:text-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500">
+                        <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@flakeburgers" target="_blank" rel="noopener noreferrer"
+                        aria-label="Flake Burgers op TikTok"
+                        class="flex h-11 w-11 items-center justify-center rounded-full text-lg hover:bg-zinc-100 hover:text-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500">
+                        <i class="fa-brands fa-tiktok" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Bestel Knop -->
+            <div class="hidden lg:flex items-center gap-2">
+                <a href="#opening-hours"
+                    class="flex min-h-11 items-center gap-2 whitespace-nowrap rounded-full px-2 text-[0.65rem] font-bold uppercase tracking-wider text-zinc-700 transition-colors hover:bg-zinc-100 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2">
+                    <span data-open-dot class="h-2.5 w-2.5 rounded-full bg-zinc-400" aria-hidden="true"></span>
+                    <span data-open-status aria-live="polite">Openingsstatus laden</span>
+                </a>
+                <a href="https://deliveroo.be/en/menu/Kortrijk/centrum/smashed-burger-kortrijk?day=today&amp;geohash=u1434q69dzqb&amp;time=ASAP"
+                    target="_blank" rel="noopener noreferrer"
+                    class="bg-sky-300 hover:bg-sky-400 text-black font-extrabold px-4 py-2 rounded-full uppercase text-[0.65rem] tracking-wider transition-all">
+                    <span data-i18n="nav.order">Bestellen via Deliveroo</span>
+                </a>
+                <button type="button" data-language-toggle aria-label="Switch to English" aria-pressed="false"
+                    class="min-w-11 border border-zinc-300 hover:border-sky-400 hover:text-sky-600 text-zinc-700 font-extrabold px-3 py-2.5 rounded-full uppercase text-xs tracking-wider transition-colors">
+                    NL
+                </button>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="menu-btn" type="button" aria-label="Navigatiemenu openen" aria-controls="mobile-menu"
+                aria-expanded="false" class="lg:hidden text-2xl text-zinc-900">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Drawer -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-zinc-200 px-6 py-6 space-y-4">
+            <a href="#opening-hours"
+                class="flex min-h-11 items-center gap-2 rounded-xl px-3 text-sm font-bold uppercase tracking-wider text-zinc-700 transition-colors hover:bg-zinc-100 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500">
+                <span data-open-dot class="h-2.5 w-2.5 rounded-full bg-zinc-400" aria-hidden="true"></span>
+                <span data-open-status aria-live="polite">Openingsstatus laden</span>
+            </a>
+            <a href="menu.html" class="block text-lg font-bold text-zinc-900 hover:text-sky-400">Menu</a>
+            <a href="#events" class="block text-lg font-bold text-zinc-900 hover:text-sky-400">Foodtruck & Events</a>
+            <a href="#location" data-i18n="nav.location"
+                class="block text-lg font-bold text-zinc-900 hover:text-sky-400">Vind ons</a>
+            <a href="contact.html" class="block text-lg font-bold text-zinc-900 hover:text-sky-400">Contact</a>
+            <div class="flex items-center gap-2 border-t border-zinc-100 pt-3" aria-label="Social media">
+                <a href="https://www.instagram.com/flakeburgers/" target="_blank" rel="noopener noreferrer"
+                    aria-label="Flake Burgers op Instagram"
+                    class="flex h-11 w-11 items-center justify-center rounded-full bg-zinc-100 text-xl hover:bg-sky-100 hover:text-sky-600">
+                    <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                </a>
+                <a href="https://www.tiktok.com/@flakeburgers" target="_blank" rel="noopener noreferrer"
+                    aria-label="Flake Burgers op TikTok"
+                    class="flex h-11 w-11 items-center justify-center rounded-full bg-zinc-100 text-xl hover:bg-sky-100 hover:text-sky-600">
+                    <i class="fa-brands fa-tiktok" aria-hidden="true"></i>
+                </a>
+            </div>
+            <a href="https://deliveroo.be/en/menu/Kortrijk/centrum/smashed-burger-kortrijk?day=today&amp;geohash=u1434q69dzqb&amp;time=ASAP"
+                target="_blank" rel="noopener noreferrer"
+                class="block w-full text-center bg-sky-300 text-black font-bold py-3 rounded-full uppercase">
+                <span data-i18n="nav.order">Bestellen via Deliveroo</span>
+            </a>
+            <button type="button" data-language-toggle aria-label="Switch to English" aria-pressed="false"
+                class="w-full border border-zinc-300 text-zinc-900 font-bold py-3 rounded-full uppercase">
+                NL
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="relative min-h-[85vh] flex items-center pt-20 bg-white overflow-hidden">
+        <div
+            class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 grid grid-cols-1 lg:grid-cols-2 gap-10 xl:gap-16 items-center">
+            <div class="min-w-0">
+                <span class="text-sky-500 font-extrabold tracking-widest uppercase text-sm block mb-3">
+                    7 Days a week
+                </span>
+                <h1
+                    class="text-[clamp(3rem,5vw,5.5rem)] font-extrabold uppercase leading-none tracking-tight text-zinc-900 mb-6">
+                    DELICIOUS <br><span class="inline-block text-[0.72em] text-sky-400 whitespace-nowrap">SMASH
+                        BURGERS</span>
+                </h1>
+                <p class="text-xl font-bold text-zinc-800 mb-8">
+                    Burgers &nbsp;•&nbsp; Sundaes &nbsp;•&nbsp; Lemonades
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="menu.html"
+                        class="bg-zinc-900 hover:bg-zinc-800 text-white font-bold px-8 py-4 rounded-full text-center uppercase tracking-wider text-sm transition-all">
+                        <span data-i18n="hero.menu">Bekijk Menu</span>
+                    </a>
+                    <a href="https://www.google.com/maps/search/?api=1&amp;query=Leiestraat+43%2C+8500+Kortrijk"
+                        target="_blank" rel="noopener noreferrer"
+                        class="border border-zinc-300 hover:border-zinc-900 text-zinc-900 font-bold px-8 py-4 rounded-full text-center uppercase tracking-wider text-sm transition-all">
+                        Leiestraat 43, Kortrijk
+                    </a>
+                </div>
+            </div>
+
+            <div class="relative min-w-0 w-full h-80 sm:h-[400px] lg:h-[480px] rounded-3xl overflow-hidden shadow-2xl">
+                <img src="images/meal%204.jpg" alt="Flake Smashburger" class="w-full h-full object-cover">
+            </div>
+        </div>
+    </section>
+
+    <!-- HORIZONTAL SCROLL GALLERY -->
+    <section id="gallery" class="py-16 bg-zinc-50 border-y border-zinc-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+            <h2 data-i18n="gallery.title" class="text-5xl uppercase tracking-tight text-zinc-900">Sfeer &amp; Flavour
+            </h2>
+            <p class="text-zinc-500 text-sm mt-1"><span data-i18n="gallery.hint">Scroll van links naar rechts</span> <i
+                    class="fa-solid fa-arrow-right ml-1"></i></p>
+        </div>
+
+        <div class="flex overflow-x-auto gap-6 px-4 sm:px-8 pb-6 no-scrollbar snap-x snap-mandatory">
+            <div class="snap-center shrink-0 w-72 sm:w-80 h-96 rounded-2xl overflow-hidden shadow-md">
+                <img src="images/cover%202.jpg" alt="Flake Foil Wrapped Burgers"
+                    class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="snap-center shrink-0 w-72 sm:w-80 h-96 rounded-2xl overflow-hidden shadow-md">
+                <img src="images/drinks.jpg" alt="Fresh Lemonades"
+                    class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="snap-center shrink-0 w-72 sm:w-80 h-96 rounded-2xl overflow-hidden shadow-md">
+                <img src="images/meal%203.jpg" alt="Smashburger &amp; Drink Combo"
+                    class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="snap-center shrink-0 w-72 sm:w-80 h-96 rounded-2xl overflow-hidden shadow-md">
+                <img src="images/cheeseburger.jpg" alt="Juicy Cheeseburger"
+                    class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="snap-center shrink-0 w-72 sm:w-80 h-96 rounded-2xl overflow-hidden shadow-md">
+                <img src="images/meal.jpg" alt="Flake Meal Deal"
+                    class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="snap-center shrink-0 w-72 sm:w-80 h-96 rounded-2xl overflow-hidden shadow-md">
+                <img src="images/find%20us.jpg" alt="Entrance of Flake Burgers in Kortrijk"
+                    class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="snap-center shrink-0 w-72 sm:w-80 h-96 rounded-2xl overflow-hidden shadow-md">
+                <img src="images/meal%205.jpg" alt="Guest enjoying a Flake burger"
+                    class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="snap-center shrink-0 w-72 sm:w-80 h-96 rounded-2xl overflow-hidden shadow-md">
+                <img src="images/meal%206.jpg" alt="Guests enjoying burgers and lemonades at Flake"
+                    class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="snap-center shrink-0 w-72 sm:w-80 h-96 rounded-2xl overflow-hidden shadow-md">
+                <img src="images/cheeseburger%202.jpg" alt="Flake cheeseburger on foil"
+                    class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="snap-center shrink-0 w-72 sm:w-80 h-96 rounded-2xl overflow-hidden shadow-md">
+                <img src="images/fries.jpg" alt="Flake fries with sauce"
+                    class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+            </div>
+        </div>
+    </section>
+
+    <!-- VIDEO SECTION -->
+    <section id="videos" class="bg-zinc-900 py-16 sm:py-24 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-10 max-w-2xl">
+                <span class="text-sm font-extrabold uppercase tracking-[0.2em] text-sky-300">Behind the scenes</span>
+                <h2 class="mt-2 text-5xl sm:text-6xl uppercase tracking-tight">Flake in Motion</h2>
+                <p data-i18n="videos.subtitle" class="mt-3 text-zinc-400">Deals, sfeer en smashburgers in beweging.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+                <article
+                    class="overflow-hidden rounded-3xl border border-zinc-700 bg-zinc-800 shadow-2xl shadow-black/20">
+                    <div class="aspect-video bg-black">
+                        <video data-gallery-video controls playsinline preload="metadata"
+                            aria-label="Flake Student Deal video" class="h-full w-full object-contain">
+                            <source src="images/Student%20Deal.mp4" type="video/mp4">
+                            Je browser ondersteunt deze video niet.
+                        </video>
+                    </div>
+                    <div class="flex items-center justify-between gap-4 px-5 py-4">
+                        <h3 class="text-2xl uppercase tracking-wide">Student Deal</h3>
+                        <i class="fa-solid fa-circle-play text-xl text-sky-300" aria-hidden="true"></i>
+                    </div>
+                </article>
+
+                <article
+                    class="overflow-hidden rounded-3xl border border-zinc-700 bg-zinc-800 shadow-2xl shadow-black/20">
+                    <div class="aspect-video bg-black">
+                        <video data-gallery-video controls playsinline preload="metadata" aria-label="Flake promo video"
+                            class="h-full w-full object-contain">
+                            <source src="images/Promo%20Clip.mp4" type="video/mp4">
+                            Je browser ondersteunt deze video niet.
+                        </video>
+                    </div>
+                    <div class="flex items-center justify-between gap-4 px-5 py-4">
+                        <h3 class="text-2xl uppercase tracking-wide">Promo Clip</h3>
+                        <i class="fa-solid fa-circle-play text-xl text-sky-300" aria-hidden="true"></i>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAVORITES SECTION -->
+    <section id="favorites" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-xl mx-auto mb-16">
+                <h2 data-i18n="favorites.title" class="text-6xl uppercase tracking-tight text-zinc-900">Onze Favorieten
+                </h2>
+                <p data-i18n="favorites.subtitle" class="text-zinc-500 mt-2">Een selectie van onze populairste burgers
+                    en drinks.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <article
+                    class="bg-white border border-zinc-200 rounded-2xl overflow-hidden hover:shadow-xl transition-shadow group">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="images/cheeseburger.jpg" alt="Classic burger"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span
+                            class="absolute top-4 right-4 bg-sky-300 text-black font-display text-2xl px-3 py-1 rounded-md font-bold">€
+                            11,00</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-3xl uppercase text-zinc-900 mb-2">Classic</h3>
+                        <p class="text-zinc-600 text-sm leading-relaxed">Double smash patty, cheddar, pickles &amp;
+                            signature Flake sauce.</p>
+                    </div>
+                </article>
+
+                <article
+                    class="bg-white border border-zinc-200 rounded-2xl overflow-hidden hover:shadow-xl transition-shadow group">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="images/meal%204.jpg" alt="Flake's Burger"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span
+                            class="absolute top-4 right-4 bg-sky-300 text-black font-display text-2xl px-3 py-1 rounded-md font-bold">€
+                            12,00</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-3xl uppercase text-zinc-900 mb-2">Flake's Burger</h3>
+                        <p data-i18n="favorites.flakeDescription" class="text-zinc-600 text-sm leading-relaxed">Onze
+                            special met onion jam, extra cheese &amp; speciaal huisrecept.</p>
+                    </div>
+                </article>
+
+                <article
+                    class="bg-white border border-zinc-200 rounded-2xl overflow-hidden hover:shadow-xl transition-shadow group">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="images/drinks.jpg" alt="Drinks &amp; Sundaes"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span data-i18n="favorites.fromPrice"
+                            class="absolute top-4 right-4 bg-sky-300 text-black font-display text-2xl px-3 py-1 rounded-md font-bold">Vanaf
+                            € 4,00</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-3xl uppercase text-zinc-900 mb-2">Drinks &amp; Sundaes</h3>
+                        <p data-i18n="favorites.drinksDescription" class="text-zinc-600 text-sm leading-relaxed">Verse
+                            huisgemaakte Pink Lemonade &amp; ambachtelijke Caramel Sundaes.</p>
+                    </div>
+                </article>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="menu.html" data-i18n="favorites.cta"
+                    class="inline-block bg-zinc-900 hover:bg-zinc-800 text-white font-bold px-8 py-4 rounded-full uppercase tracking-wider text-sm transition-colors">
+                    Bekijk de volledige menukaart
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOODTRUCK & EVENTS BANNER -->
+    <section id="events" class="py-20 bg-sky-300 text-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div>
+                <h2 class="text-5xl sm:text-6xl uppercase tracking-tight mb-4">Foodtruck &amp; Events</h2>
+                <p data-i18n="events.description" class="text-lg font-medium mb-6">Organiseer je een event, feest of
+                    festival? Stuur ons direct
+                    een berichtje op Instagram voor catering op locatie.</p>
+                <a href="https://www.instagram.com/flakeburgers/" target="_blank" rel="noopener noreferrer"
+                    class="inline-flex items-center gap-3 bg-black text-white font-bold px-8 py-4 rounded-full uppercase tracking-wider text-sm hover:bg-zinc-800 transition-colors">
+                    <i class="fa-brands fa-instagram text-lg"></i> <span data-i18n="events.cta">DM voor Foodtruck &amp;
+                        Events</span>
+                </a>
+            </div>
+            <div class="event-collage" aria-label="Flake event posters">
+                <figure class="event-poster event-poster-pink">
+                    <img src="images/collab%20event%202.png" alt="Pink Flake event poster"
+                        class="w-full h-full object-cover">
+                </figure>
+                <figure class="event-poster event-poster-green">
+                    <img src="images/collab%20event%203.png" alt="Green Flake event poster"
+                        class="w-full h-full object-cover">
+                </figure>
+                <figure class="event-poster event-poster-blue">
+                    <img src="images/collab%20event.jpg" alt="Blue Flake event poster"
+                        class="w-full h-full object-cover">
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOCATION & HOURS SECTION -->
+    <section id="location" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+                <!-- Info -->
+                <div class="space-y-8">
+                    <div>
+                        <h2 data-i18n="location.title" class="text-6xl uppercase tracking-tight text-zinc-900 mb-4">Vind
+                            Ons in Kortrijk</h2>
+                        <p class="text-zinc-500">No reservations, just come in and say hi!</p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-sky-100 text-sky-600 rounded-xl text-xl"><i
+                                    class="fa-solid fa-location-dot"></i></div>
+                            <div>
+                                <h4 data-i18n="location.addressLabel" class="font-bold uppercase text-zinc-900">Adres
+                                </h4>
+                                <a href="https://www.google.com/maps/search/?api=1&amp;query=Leiestraat+43%2C+8500+Kortrijk"
+                                    target="_blank" rel="noopener noreferrer"
+                                    class="inline-block text-zinc-600 hover:text-sky-600 text-sm mt-1 underline decoration-zinc-300 underline-offset-4 transition-colors">
+                                    Leiestraat 43, 8500 Kortrijk <i
+                                        class="fa-solid fa-arrow-up-right-from-square ml-1 text-xs"></i>
+                                </a>
+                                <a href="mailto:info@flake.be"
+                                    class="block text-zinc-600 hover:text-sky-600 text-sm mt-2 transition-colors">
+                                    <i class="fa-solid fa-envelope mr-1"></i> info@flake.be
+                                </a>
+                            </div>
+                        </div>
+
+                        <div id="opening-hours" class="flex scroll-mt-28 items-start gap-4">
+                            <div class="p-3 bg-sky-100 text-sky-600 rounded-xl text-xl"><i
+                                    class="fa-solid fa-clock"></i></div>
+                            <div>
+                                <h4 data-i18n="location.hoursLabel" class="font-bold uppercase text-zinc-900">
+                                    Openingsuren</h4>
+                                <p class="text-zinc-900 font-bold text-sm mt-1">7 DAYS A WEEK OPEN</p>
+                                <p data-i18n="location.hours" class="text-zinc-600 text-sm">Maandag t/m Zondag: 12:00 –
+                                    22:00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mapbox Map Container -->
+                <div class="h-[400px] bg-zinc-100 rounded-3xl border border-zinc-200 relative overflow-hidden">
+                    <div id="map"></div>
+                    <div id="map-fallback"
+                        class="absolute inset-0 bg-zinc-100 flex flex-col items-center justify-center p-6 text-center">
+                        <i class="fa-solid fa-map-location-dot text-5xl text-sky-400 mb-4"></i>
+                        <a href="https://www.google.com/maps/search/?api=1&amp;query=Leiestraat+43%2C+8500+Kortrijk"
+                            target="_blank" rel="noopener noreferrer"
+                            class="text-zinc-900 hover:text-sky-600 font-bold uppercase mb-1 transition-colors">
+                            Leiestraat 43, Kortrijk
+                        </a>
+                        <p data-i18n="location.mapHint" class="text-zinc-500 text-xs max-w-xs">Voeg je Mapbox Token toe
+                            in <code class="text-sky-500">script.js</code> voor de live kaart.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-zinc-900 text-white py-12">
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-6">
+            <div>
+                <span class="font-display text-4xl text-sky-300 uppercase tracking-wider">FLAKE</span>
+                <p class="text-xs text-zinc-400 mt-1">© <span id="current-year"></span> Flake Burgers.</p>
+            </div>
+            <div class="flex flex-wrap justify-center sm:justify-end gap-3 text-xs text-zinc-400 sm:ml-auto">
+                <a href="voorwaarden.html" data-i18n="footer.terms"
+                    class="hover:text-sky-300 transition-colors">Gebruiksvoorwaarden</a>
+                <a href="privacy.html" data-i18n="footer.privacy"
+                    class="hover:text-sky-300 transition-colors">Privacybeleid</a>
+                <a href="cookies.html" data-i18n="footer.cookies"
+                    class="hover:text-sky-300 transition-colors">Cookiebeleid</a>
+            </div>
+            <div class="flex items-center gap-2 text-2xl text-zinc-400">
+                <a href="https://www.instagram.com/flakeburgers/" target="_blank" rel="noopener noreferrer"
+                    aria-label="Flake Burgers op Instagram"
+                    class="flex h-11 w-11 items-center justify-center rounded-full hover:bg-zinc-800 hover:text-sky-300 transition-colors"><i
+                        class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+                <a href="https://www.tiktok.com/@flakeburgers" target="_blank" rel="noopener noreferrer"
+                    aria-label="Flake Burgers op TikTok"
+                    class="flex h-11 w-11 items-center justify-center rounded-full hover:bg-zinc-800 hover:text-sky-300 transition-colors"><i
+                        class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <a id="back-to-top" href="#top" aria-label="Terug naar boven"
+        class="pointer-events-none fixed bottom-10 right-6 z-40 flex h-12 w-12 translate-y-3 items-center justify-center rounded-full bg-zinc-200 text-lg text-zinc-600 opacity-0 shadow-lg transition-all duration-200 hover:bg-sky-300 hover:text-sky-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2">
+        <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+    </a>
+
+    <!-- Javascript koppeling -->
+    <!-- COOKIE BANNER -->
+    <div id="cookie-banner"
+        class="fixed bottom-0 inset-x-0 z-50 bg-white/95 backdrop-blur-md border-t border-zinc-200 shadow-2xl p-4 md:p-6 hidden">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
+            <div class="text-xs sm:text-sm text-zinc-600 max-w-2xl">
+                <p data-i18n="cookies.title" class="font-bold text-zinc-900 mb-1">Cookie-voorkeuren</p>
+                <p data-i18n="cookies.description">Wij gebruiken cookies om onze website goed te laten functioneren en
+                    je de beste ervaring te bieden. Kies hieronder je voorkeuren.</p>
+            </div>
+            <div class="flex flex-wrap items-center gap-2.5 w-full lg:w-auto">
+                <button id="cookie-settings-btn" type="button"
+                    class="bg-white text-zinc-900 border border-zinc-300 hover:bg-zinc-100 font-bold px-4 py-2.5 rounded-full text-xs uppercase tracking-wider transition-colors"
+                    data-i18n="cookies.settings">Cookie-instellingen</button>
+                <button id="cookie-reject-btn" type="button"
+                    class="bg-zinc-200 hover:bg-zinc-300 text-zinc-900 font-extrabold px-4 py-2.5 rounded-full text-xs uppercase tracking-wider transition-colors"
+                    data-i18n="cookies.reject">Niet-noodzakelijke afwijzen</button>
+                <button id="cookie-accept-btn" type="button"
+                    class="bg-sky-300 hover:bg-sky-400 text-black font-extrabold px-4 py-2.5 rounded-full text-xs uppercase tracking-wider transition-colors"
+                    data-i18n="cookies.accept">Alle cookies accepteren</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- COOKIE SETTINGS MODAL -->
+    <div id="cookie-modal" role="dialog" aria-modal="true" aria-labelledby="cookie-modal-title"
+        class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 space-y-6 shadow-2xl border border-zinc-100">
+            <div class="flex justify-between items-center border-b border-zinc-100 pb-4">
+                <h2 id="cookie-modal-title" data-i18n="cookies.settings"
+                    class="font-display text-3xl uppercase tracking-wide text-zinc-900">Cookie-instellingen</h2>
+                <button id="close-modal-btn" type="button" aria-label="Sluiten"
+                    class="text-zinc-400 hover:text-zinc-900 text-xl"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="space-y-4 text-xs text-zinc-600">
+                <div class="flex justify-between items-center gap-4 p-3.5 bg-zinc-50 rounded-2xl">
+                    <div>
+                        <p data-i18n="cookies.necessary" class="font-bold text-zinc-900">Noodzakelijke cookies</p>
+                        <p data-i18n="cookies.necessaryDescription" class="text-zinc-500">Nodig voor basisfuncties en
+                            beveiliging van de site.</p>
+                    </div>
+                    <input type="checkbox" checked disabled aria-label="Noodzakelijke cookies"
+                        class="h-4 w-4 accent-sky-400">
+                </div>
+                <div class="flex justify-between items-center gap-4 p-3.5 bg-zinc-50 rounded-2xl">
+                    <div>
+                        <p data-i18n="cookies.functional" class="font-bold text-zinc-900">Functionele cookies</p>
+                        <p data-i18n="cookies.functionalDescription" class="text-zinc-500">Onthouden voorkeuren en de
+                            kaartweergave.</p>
+                    </div>
+                    <input type="checkbox" id="cookie-func" class="h-4 w-4 accent-sky-400">
+                </div>
+                <div class="flex justify-between items-center gap-4 p-3.5 bg-zinc-50 rounded-2xl">
+                    <div>
+                        <p data-i18n="cookies.analytics" class="font-bold text-zinc-900">Analytische cookies</p>
+                        <p data-i18n="cookies.analyticsDescription" class="text-zinc-500">Helpen ons de prestaties van
+                            de site te meten.</p>
+                    </div>
+                    <input type="checkbox" id="cookie-analytics" class="h-4 w-4 accent-sky-400">
+                </div>
+            </div>
+            <button id="save-cookie-settings" type="button"
+                class="w-full bg-sky-300 hover:bg-sky-400 text-black font-extrabold py-3.5 rounded-full text-xs uppercase tracking-wider transition-colors"
+                data-i18n="cookies.save">Voorkeuren opslaan</button>
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>

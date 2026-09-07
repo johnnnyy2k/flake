@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="nl" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Flake Burgers Kortrijk</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-white text-zinc-900 antialiased selection:bg-sky-300 selection:text-black">
+    <nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-zinc-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="index.html" aria-label="Terug naar de homepagina"
+                class="block h-12 w-28 shrink-0 overflow-hidden rounded-md bg-sky-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2">
+                <img src="images/logo.jpg" alt="Flake Burgers" class="h-full w-full scale-[1.55] object-cover"
+                    width="112" height="48">
+            </a>
+            <div class="hidden lg:flex items-center space-x-6 font-bold text-sm uppercase tracking-wider text-zinc-700">
+                <a href="menu.html" class="hover:text-sky-400 transition-colors">Menu</a>
+                <a href="index.html#events" class="hover:text-sky-400 transition-colors">Foodtruck &amp; Events</a>
+                <a href="index.html#location" data-i18n="nav.location" class="hover:text-sky-400 transition-colors">Vind ons</a>
+                <a href="contact.html" class="text-sky-500">Contact</a>
+                <div class="flex items-center" aria-label="Social media">
+                    <a href="https://www.instagram.com/flakeburgers/" target="_blank" rel="noopener noreferrer" aria-label="Flake Burgers op Instagram"
+                        class="flex h-11 w-11 items-center justify-center rounded-full text-lg hover:bg-zinc-100 hover:text-sky-500"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+                    <a href="https://www.tiktok.com/@flakeburgers" target="_blank" rel="noopener noreferrer" aria-label="Flake Burgers op TikTok"
+                        class="flex h-11 w-11 items-center justify-center rounded-full text-lg hover:bg-zinc-100 hover:text-sky-500"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
+                </div>
+            </div>
+            <div class="hidden lg:flex items-center gap-2">
+                <a href="https://deliveroo.be/en/menu/Kortrijk/centrum/smashed-burger-kortrijk?day=today&amp;geohash=u1434q69dzqb&amp;time=ASAP"
+                    target="_blank" rel="noopener noreferrer"
+                    class="bg-sky-300 hover:bg-sky-400 text-black font-extrabold px-4 py-2 rounded-full uppercase text-[0.65rem] tracking-wider transition-all">
+                    <span data-i18n="nav.order">Bestellen via Deliveroo</span>
+                </a>
+                <button type="button" data-language-toggle aria-label="Switch to English" aria-pressed="false"
+                    class="min-w-11 border border-zinc-300 hover:border-sky-400 hover:text-sky-600 text-zinc-700 font-extrabold px-3 py-2.5 rounded-full uppercase text-xs">NL</button>
+            </div>
+            <button id="menu-btn" type="button" aria-label="Navigatiemenu openen" aria-controls="mobile-menu"
+                aria-expanded="false" class="lg:hidden text-2xl text-zinc-900"><i class="fa-solid fa-bars"></i></button>
+        </div>
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-zinc-200 px-6 py-6 space-y-4">
+            <a href="menu.html" class="block text-lg font-bold text-zinc-900 hover:text-sky-400">Menu</a>
+            <a href="index.html#events" class="block text-lg font-bold text-zinc-900 hover:text-sky-400">Foodtruck &amp; Events</a>
+            <a href="index.html#location" data-i18n="nav.location" class="block text-lg font-bold text-zinc-900 hover:text-sky-400">Vind ons</a>
+            <a href="contact.html" class="block text-lg font-bold text-sky-500">Contact</a>
+            <div class="flex items-center gap-2 border-t border-zinc-100 pt-3" aria-label="Social media">
+                <a href="https://www.instagram.com/flakeburgers/" target="_blank" rel="noopener noreferrer" aria-label="Flake Burgers op Instagram"
+                    class="flex h-11 w-11 items-center justify-center rounded-full bg-zinc-100 text-xl hover:bg-sky-100 hover:text-sky-600"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+                <a href="https://www.tiktok.com/@flakeburgers" target="_blank" rel="noopener noreferrer" aria-label="Flake Burgers op TikTok"
+                    class="flex h-11 w-11 items-center justify-center rounded-full bg-zinc-100 text-xl hover:bg-sky-100 hover:text-sky-600"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
+            </div>
+            <a href="https://deliveroo.be/en/menu/Kortrijk/centrum/smashed-burger-kortrijk?day=today&amp;geohash=u1434q69dzqb&amp;time=ASAP"
+                target="_blank" rel="noopener noreferrer"
+                class="block w-full text-center bg-sky-300 text-black font-bold py-3 rounded-full uppercase">
+                <span data-i18n="nav.order">Bestellen via Deliveroo</span>
+            </a>
+            <button type="button" data-language-toggle aria-label="Switch to English" aria-pressed="false"
+                class="w-full border border-zinc-300 text-zinc-900 font-bold py-3 rounded-full uppercase">NL</button>
+        </div>
+    </nav>
+
+    <main class="pt-20">
+        <section class="py-16 sm:py-24 bg-zinc-50 min-h-[calc(100vh-5rem)]">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-5 gap-12">
+                <div class="lg:col-span-2">
+                    <span class="text-sky-500 font-extrabold tracking-widest uppercase text-sm">Flake Kortrijk</span>
+                    <h1 data-i18n="contact.title" class="text-6xl sm:text-7xl uppercase tracking-tight mt-2">Neem Contact Op</h1>
+                    <p data-i18n="contact.intro" class="text-zinc-600 mt-5 leading-relaxed">Een vraag, samenwerking of aanvraag voor onze foodtruck? Stuur ons een bericht.</p>
+                    <div class="mt-8 space-y-4">
+                        <a href="mailto:info@flake.be" class="flex items-center gap-3 font-bold hover:text-sky-600 transition-colors">
+                            <i class="fa-solid fa-envelope w-5 text-sky-500"></i> info@flake.be
+                        </a>
+                        <a href="https://www.google.com/maps/search/?api=1&amp;query=Leiestraat+43%2C+8500+Kortrijk"
+                            target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 font-bold hover:text-sky-600 transition-colors">
+                            <i class="fa-solid fa-location-dot w-5 text-sky-500"></i> Leiestraat 43, 8500 Kortrijk
+                        </a>
+                    </div>
+                </div>
+
+                <form id="contact-form" action="mailto:info@flake.be" method="post" enctype="text/plain"
+                    class="lg:col-span-3 bg-white border border-zinc-200 rounded-3xl p-6 sm:p-8 shadow-xl shadow-zinc-900/5">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label for="contact-name" data-i18n="contact.name" class="block text-sm font-bold mb-2">Naam</label>
+                            <input id="contact-name" name="name" type="text" required autocomplete="name"
+                                class="w-full rounded-xl border border-zinc-300 px-4 py-3 focus:border-sky-400 focus:ring-2 focus:ring-sky-200 outline-none">
+                        </div>
+                        <div>
+                            <label for="contact-email" data-i18n="contact.email" class="block text-sm font-bold mb-2">E-mailadres</label>
+                            <input id="contact-email" name="email" type="email" required autocomplete="email"
+                                class="w-full rounded-xl border border-zinc-300 px-4 py-3 focus:border-sky-400 focus:ring-2 focus:ring-sky-200 outline-none">
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <label for="contact-subject" data-i18n="contact.subject" class="block text-sm font-bold mb-2">Onderwerp</label>
+                        <input id="contact-subject" name="subject" type="text" required
+                            class="w-full rounded-xl border border-zinc-300 px-4 py-3 focus:border-sky-400 focus:ring-2 focus:ring-sky-200 outline-none">
+                    </div>
+                    <div class="mt-6">
+                        <label for="contact-message" data-i18n="contact.message" class="block text-sm font-bold mb-2">Bericht</label>
+                        <textarea id="contact-message" name="message" rows="6" required
+                            class="w-full resize-y rounded-xl border border-zinc-300 px-4 py-3 focus:border-sky-400 focus:ring-2 focus:ring-sky-200 outline-none"></textarea>
+                    </div>
+                    <button type="submit"
+                        class="mt-6 w-full sm:w-auto bg-zinc-900 hover:bg-zinc-800 text-white font-bold px-8 py-4 rounded-full uppercase tracking-wider text-sm transition-colors">
+                        <span data-i18n="contact.submit">Verstuur bericht</span>
+                    </button>
+                    <p data-i18n="contact.note" class="text-xs text-zinc-500 mt-4">Bij verzenden opent je standaard e-mailprogramma.</p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-zinc-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-6">
+            <div>
+                <a href="index.html" class="font-display text-4xl text-sky-300 uppercase tracking-wider">FLAKE</a>
+                <p class="text-xs text-zinc-400 mt-1">© <span id="current-year"></span> Flake Burgers.</p>
+            </div>
+            <div class="flex flex-wrap justify-center sm:justify-end gap-3 text-xs text-zinc-400 sm:ml-auto">
+                <a href="voorwaarden.html" data-i18n="footer.terms" class="hover:text-sky-300 transition-colors">Gebruiksvoorwaarden</a>
+                <a href="privacy.html" data-i18n="footer.privacy" class="hover:text-sky-300 transition-colors">Privacybeleid</a>
+                <a href="cookies.html" data-i18n="footer.cookies" class="hover:text-sky-300 transition-colors">Cookiebeleid</a>
+            </div>
+            <div class="flex items-center gap-5 text-2xl text-zinc-400">
+                <a href="https://www.instagram.com/flakeburgers/" target="_blank" rel="noopener noreferrer"
+                    aria-label="Flake Burgers op Instagram" class="flex h-11 w-11 items-center justify-center rounded-full hover:bg-zinc-800 hover:text-sky-300 transition-colors"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+                <a href="https://www.tiktok.com/@flakeburgers" target="_blank" rel="noopener noreferrer"
+                    aria-label="Flake Burgers op TikTok" class="flex h-11 w-11 items-center justify-center rounded-full hover:bg-zinc-800 hover:text-sky-300 transition-colors"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- COOKIE BANNER -->
+    <div id="cookie-banner"
+        class="fixed bottom-0 inset-x-0 z-50 bg-white/95 backdrop-blur-md border-t border-zinc-200 shadow-2xl p-4 md:p-6 hidden">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
+            <div class="text-xs sm:text-sm text-zinc-600 max-w-2xl">
+                <p data-i18n="cookies.title" class="font-bold text-zinc-900 mb-1">Cookie-voorkeuren</p>
+                <p data-i18n="cookies.description">Wij gebruiken cookies om onze website goed te laten functioneren en je de beste ervaring te bieden. Kies hieronder je voorkeuren.</p>
+            </div>
+            <div class="flex flex-wrap items-center gap-2.5 w-full lg:w-auto">
+                <button id="cookie-settings-btn" type="button"
+                    class="bg-white text-zinc-900 border border-zinc-300 hover:bg-zinc-100 font-bold px-4 py-2.5 rounded-full text-xs uppercase tracking-wider transition-colors"
+                    data-i18n="cookies.settings">Cookie-instellingen</button>
+                <button id="cookie-reject-btn" type="button"
+                    class="bg-zinc-200 hover:bg-zinc-300 text-zinc-900 font-extrabold px-4 py-2.5 rounded-full text-xs uppercase tracking-wider transition-colors"
+                    data-i18n="cookies.reject">Niet-noodzakelijke afwijzen</button>
+                <button id="cookie-accept-btn" type="button"
+                    class="bg-sky-300 hover:bg-sky-400 text-black font-extrabold px-4 py-2.5 rounded-full text-xs uppercase tracking-wider transition-colors"
+                    data-i18n="cookies.accept">Alle cookies accepteren</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- COOKIE SETTINGS MODAL -->
+    <div id="cookie-modal" role="dialog" aria-modal="true" aria-labelledby="cookie-modal-title"
+        class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 space-y-6 shadow-2xl border border-zinc-100">
+            <div class="flex justify-between items-center border-b border-zinc-100 pb-4">
+                <h2 id="cookie-modal-title" data-i18n="cookies.settings"
+                    class="font-display text-3xl uppercase tracking-wide text-zinc-900">Cookie-instellingen</h2>
+                <button id="close-modal-btn" type="button" aria-label="Sluiten"
+                    class="text-zinc-400 hover:text-zinc-900 text-xl"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="space-y-4 text-xs text-zinc-600">
+                <div class="flex justify-between items-center gap-4 p-3.5 bg-zinc-50 rounded-2xl">
+                    <div>
+                        <p data-i18n="cookies.necessary" class="font-bold text-zinc-900">Noodzakelijke cookies</p>
+                        <p data-i18n="cookies.necessaryDescription" class="text-zinc-500">Nodig voor basisfuncties en beveiliging van de site.</p>
+                    </div>
+                    <input type="checkbox" checked disabled aria-label="Noodzakelijke cookies" class="h-4 w-4 accent-sky-400">
+                </div>
+                <div class="flex justify-between items-center gap-4 p-3.5 bg-zinc-50 rounded-2xl">
+                    <div>
+                        <p data-i18n="cookies.functional" class="font-bold text-zinc-900">Functionele cookies</p>
+                        <p data-i18n="cookies.functionalDescription" class="text-zinc-500">Onthouden voorkeuren en de kaartweergave.</p>
+                    </div>
+                    <input type="checkbox" id="cookie-func" class="h-4 w-4 accent-sky-400">
+                </div>
+                <div class="flex justify-between items-center gap-4 p-3.5 bg-zinc-50 rounded-2xl">
+                    <div>
+                        <p data-i18n="cookies.analytics" class="font-bold text-zinc-900">Analytische cookies</p>
+                        <p data-i18n="cookies.analyticsDescription" class="text-zinc-500">Helpen ons de prestaties van de site te meten.</p>
+                    </div>
+                    <input type="checkbox" id="cookie-analytics" class="h-4 w-4 accent-sky-400">
+                </div>
+            </div>
+            <button id="save-cookie-settings" type="button"
+                class="w-full bg-sky-300 hover:bg-sky-400 text-black font-extrabold py-3.5 rounded-full text-xs uppercase tracking-wider transition-colors"
+                data-i18n="cookies.save">Voorkeuren opslaan</button>
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>

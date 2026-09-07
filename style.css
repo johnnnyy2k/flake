@@ -1,0 +1,169 @@
+/* ==========================================
+   FLAKE BURGERS - STYLESHEET
+   ========================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;600;800&display=swap');
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #ffffff;
+    color: #09090b;
+    font-family: 'Inter', sans-serif;
+}
+
+section[id] {
+    scroll-margin-top: 5rem;
+}
+
+.font-display {
+    font-family: 'Bebas Neue', cursive;
+    letter-spacing: 0.04em;
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid #7dd3fc;
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
+
+/* Verberg de scrollbar voor de horizontale galerij */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.menu-panel {
+    padding: 1.5rem;
+    background: linear-gradient(145deg, #ffffff, #f8fcff);
+    border: 1px solid #e4e4e7;
+    border-radius: 1rem;
+    box-shadow: 0 10px 30px rgba(9, 9, 11, 0.04);
+}
+
+.menu-heading {
+    margin-bottom: 1rem;
+    color: #38bdf8;
+    font-family: 'Bebas Neue', cursive;
+    font-size: clamp(2.25rem, 5vw, 3.25rem);
+    line-height: 1;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.menu-list {
+    display: grid;
+    gap: 0.25rem;
+}
+
+.menu-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 1rem;
+    align-items: baseline;
+    padding: 0.65rem 0;
+    border-bottom: 1px dashed #d4d4d8;
+    color: #27272a;
+    font-weight: 600;
+}
+
+.menu-row:last-child {
+    border-bottom: 0;
+}
+
+.menu-row > span:last-child {
+    color: #0284c7;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.menu-row small {
+    display: inline-block;
+    margin-left: 0.35rem;
+    color: #a1a1aa;
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.event-collage {
+    position: relative;
+    min-width: 0;
+    height: clamp(21rem, 38vw, 29rem);
+}
+
+.event-poster {
+    position: absolute;
+    top: 10%;
+    width: 45%;
+    max-width: 13.5rem;
+    aspect-ratio: 1200 / 1689;
+    overflow: hidden;
+    background-color: #ffffff;
+    border: 5px solid #ffffff;
+    border-radius: 1rem;
+    box-shadow: 0 20px 40px rgba(9, 9, 11, 0.22);
+    transition: transform 250ms ease, box-shadow 250ms ease;
+}
+
+.event-poster-pink {
+    left: 4%;
+    transform: rotate(-8deg);
+    z-index: 1;
+}
+
+.event-poster-green {
+    right: 4%;
+    transform: rotate(8deg);
+    z-index: 2;
+}
+
+.event-poster-blue {
+    top: 1%;
+    left: 50%;
+    transform: translateX(-50%) rotate(-1deg);
+    z-index: 3;
+}
+
+.event-poster:hover {
+    box-shadow: 0 24px 48px rgba(9, 9, 11, 0.28);
+}
+
+.event-poster-pink:hover {
+    transform: rotate(-5deg) translateY(-0.35rem);
+}
+
+.event-poster-green:hover {
+    transform: rotate(5deg) translateY(-0.35rem);
+}
+
+.event-poster-blue:hover {
+    transform: translateX(-50%) rotate(0deg) translateY(-0.35rem);
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+}
